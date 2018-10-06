@@ -1,0 +1,41 @@
+.red {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  border-top: 4px solid gold;
+  animation: spin 2.8s linear infinite;
+  transition: 0.3s;
+}
+.green {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 138px;
+  height: 138px;
+  border: 2px solid transparent;
+  border-top: 4px solid #4da3ff;
+  border-radius: 50%;
+  animation: spin 2.1s ease-in-out infinite;
+  transition: 0.3s;
+}
+.blue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 126px;
+  height: 126px;
+  border: 2px solid transparent;
+  border-top: 4px solid #438ddd;
+  border-radius: 50%;
+  animation: spin 1.68s ease-in-out infinite;
+  transition: 0.3s;
+}
+
+@keyframes spin {
+  0% {transform: translate(-50%, -50%) rotate(0deg);}
+  100% {transform: translate(-50%, -50%) rotate(360deg);}
+}

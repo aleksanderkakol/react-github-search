@@ -1,0 +1,86 @@
+@import "./print";
+@import "./reset";
+@import "./header";
+@import "./search";
+@import "./article";
+@import "./loading";
+@import "./buttons";
+
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+img {
+  width: 30px;
+  height: 30px;
+}
+
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content
+  }
+}
+
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content
+  }
+}
+
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content
+  }
+}
+
+.wrapper {
+  width: 100vw;
+  margin: 10px auto;
+  box-shadow: 10px 0 100px 10px rgba(0, 0, 0, 0.15);
+
+  @include sm {
+    width: 95vw;
+  }
+  @include md {
+    width: 90vw;
+  }
+  @include lg {
+    width: 85vw;
+  }
+  @include xl {
+    width: 80vw;
+  }
+}
+
+.btn {
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  border: 0;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
+  background-color: #647ee1;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    box-shadow: inset 0 0 20px 8px #6f8bf9, 0 0 8px 1px rgba(0, 0, 0, 0.15);
+  }
+  &:active {
+    box-shadow: inset 0 0 20px 8px #5c74cf;
+  }
+}

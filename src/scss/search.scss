@@ -1,0 +1,26 @@
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  .search-label {
+    padding: 30px;
+    transition: 1s;
+    .search-input {
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 1.5rem;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.44);
+      box-shadow: 5px 0 20px 1px rgba(0, 0, 0, 0.15);
+      transition: 0.2s;
+      &:hover {
+        background-color: #eeeeee;
+      }
+    }
+  }
+  .move-up {
+    padding: 35vh;
+  }
+}
