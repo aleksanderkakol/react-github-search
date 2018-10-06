@@ -1,5 +1,7 @@
 ### **Live demo:** [Click](https://aleksanderkakol.github.io/react-github-search/dist)
 
+Save githubg repositories to localstorage
+
 
 # react-github-repo-search
 
