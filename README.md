@@ -1,3 +1,6 @@
+### **Live demo:** [Click](https://aleksanderkakol.github.io/react-github-search/dist)
+
+
 # react-github-repo-search
 
 
