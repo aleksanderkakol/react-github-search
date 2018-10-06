@@ -15,12 +15,13 @@
       border: 1px solid rgba(0, 0, 0, 0.44);
       box-shadow: 5px 0 20px 1px rgba(0, 0, 0, 0.15);
       transition: 0.2s;
+      width: 50vw;
       &:hover {
         background-color: #eeeeee;
       }
     }
   }
   .move-up {
-    padding: 35vh;
+    padding: 35vh 0;
   }
 }

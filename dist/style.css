@@ -116,11 +116,12 @@ table {
       border-radius: 5px;
       border: 1px solid rgba(0, 0, 0, 0.44);
       box-shadow: 5px 0 20px 1px rgba(0, 0, 0, 0.15);
-      transition: 0.2s; }
+      transition: 0.2s;
+      width: 50vw; }
       .section .search-label .search-input:hover {
         background-color: #eeeeee; }
   .section .move-up {
-    padding: 35vh; }
+    padding: 35vh 0; }
 
 .content {
   width: inherit;
@@ -242,7 +243,7 @@ img {
   box-shadow: 10px 0 100px 10px rgba(0, 0, 0, 0.15); }
   @media (min-width: 576px) {
     .wrapper {
-      width: 95%; } }
+      width: 99%; } }
   @media (min-width: 768px) {
     .wrapper {
       width: 90%; } }
