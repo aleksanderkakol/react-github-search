@@ -123,7 +123,14 @@ table {
     padding: 35vh; }
 
 .content {
-  width: inherit; }
+  width: inherit;
+  animation: show 0.5s linear  forwards; }
+
+@keyframes show {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 .article {
   width: 95%;
@@ -173,7 +180,7 @@ table {
   border: 2px solid transparent;
   border-radius: 50%;
   border-top: 4px solid gold;
-  animation: spin 2.8s linear infinite;
+  animation: spin 2.8s linear infinite, show 2s linear forwards;
   transition: 0.3s; }
 
 .green {
@@ -185,7 +192,7 @@ table {
   border: 2px solid transparent;
   border-top: 4px solid #4da3ff;
   border-radius: 50%;
-  animation: spin 2.1s ease-in-out infinite;
+  animation: spin 2.1s ease-in-out infinite, show 2.2s linear forwards;
   transition: 0.3s; }
 
 .blue {
@@ -197,7 +204,7 @@ table {
   border: 2px solid transparent;
   border-top: 4px solid #438ddd;
   border-radius: 50%;
-  animation: spin 1.68s ease-in-out infinite;
+  animation: spin 1.68s ease-in-out infinite, show 2.4s linear forwards;
   transition: 0.3s; }
 
 @keyframes spin {
@@ -205,6 +212,12 @@ table {
     transform: translate(-50%, -50%) rotate(0deg); }
   100% {
     transform: translate(-50%, -50%) rotate(360deg); } }
+
+@keyframes show {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 .buttons {
   width: 100%;
