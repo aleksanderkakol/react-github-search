@@ -121,7 +121,7 @@ table {
       .section .search-label .search-input:hover {
         background-color: #eeeeee; }
   .section .move-up {
-    padding: 35vh 0; }
+    margin: 35vh 0; }
 
 .content {
   width: inherit;
