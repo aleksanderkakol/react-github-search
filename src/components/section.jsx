@@ -10,19 +10,29 @@ const url = 'https://api.github.com/search/repositories?sort=stars&order=desc&q=
 
 
 export class Section extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             value: '',
             page: 1,
             loading: false,
-            repositories: []
+            repositories: [],
+            scroll: false,
+            offsetTop: undefined
         }
     }
 
     componentDidMount = () => {
         this.timer = null;
+        window.addEventListener('scroll', this.handleScroll);
+        this.setState({
+            offsetTop: document.querySelector(".section").offsetTop
+        })
     };
+
+    componentWillUnmount = () => {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
 
     handleChange = (event) => {
 
@@ -31,7 +41,7 @@ export class Section extends React.Component {
 
         clearTimeout(this.timer);
 
-        this.setState ({
+        this.setState({
             value: event.target.value,
             loading: true,
             page: 1
@@ -42,7 +52,7 @@ export class Section extends React.Component {
     };
 
     handleKeyDown = (event) => {
-        this.setState ({
+        this.setState({
             loading: true
         });
         if (event.keyCode === enter) {
@@ -52,23 +62,23 @@ export class Section extends React.Component {
     };
 
     triggerChange = () => {
-        if (this.state.value.length > 0){
-            fetch(url+this.state.value+'&page='+this.state.page)
+        if (this.state.value.length > 0) {
+            fetch(url + this.state.value + '&page=' + this.state.page)
                 .then(resp => resp.json())
                 .then(data => {
-                    this.setState ({
+                    this.setState({
                         repositories: data.items,
                         loading: false
                     })
                 })
                 .catch(error => {
                     console.log(error)
-            })
-        } else {}
+                })
+        } else { }
     };
 
     onNext = async () => {
-        await this.setState ({
+        await this.setState({
             loading: true,
             page: this.state.page + 1
         });
@@ -77,11 +87,11 @@ export class Section extends React.Component {
 
     onPrev = async () => {
         if (this.state.page <= 1) {
-            await this.setState ({
+            await this.setState({
                 page: 1
             });
         } else {
-            await this.setState ({
+            await this.setState({
                 loading: true,
                 page: this.state.page - 1
             });
@@ -90,23 +100,39 @@ export class Section extends React.Component {
         }
     };
 
+    handleScroll = () => {
+        if (window.pageYOffset > this.state.offsetTop) {
+            this.setState({
+                scroll: true
+            });
+        } else {
+            this.setState({
+                scroll: false
+            })
+        }
+    }
+
     render() {
 
         let loading = !this.state.loading || this.state.value.length < 1 ?
-            <Article value={this.state.value} repos={this.state.repositories}/>
-            : <Loading/>;
+            <Article value={this.state.value} repos={this.state.repositories} />
+            : <Loading />;
 
-            let buttons = this.state.repositories.length > 0 ? <Buttons page={this.state.page} onNext={this.onNext} onPrev={this.onPrev}/> : null;
+        let buttons = this.state.repositories.length > 0 ? <Buttons page={this.state.page} onNext={this.onNext} onPrev={this.onPrev} /> : null;
 
 
         return (
-            <section className="section">
-                <label className='search-label move-up'>
-                    <input className='search-input' type="text" placeholder='Search Repositories' onKeyDown={this.handleKeyDown} onChange={this.handleChange}/>
-                </label>
-                {loading}
-                {buttons}
-            </section>
+            <div>
+                <section className={`section ${this.state.scroll ? " sticky" : ""}`}>
+                    <label className='search-label move-up'>
+                        <input className='search-input' type="text" placeholder='Search Repositories' onKeyDown={this.handleKeyDown} onChange={this.handleChange} />
+                    </label>
+                </section>
+                <article className="list">
+                    {loading}
+                    {buttons}
+                </article>
+            </div >
         )
     }
 }
